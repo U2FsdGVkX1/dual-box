@@ -33,6 +33,6 @@ jobs:
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
-          file: ./sing-box
+          file: sing-box
           body: ${{ env.VERSION }}
           overwrite: true
