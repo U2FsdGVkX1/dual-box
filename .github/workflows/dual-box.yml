@@ -30,7 +30,8 @@ jobs:
           ./sing-box version >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
-      - uses: dev-drprasad/delete-older-releases@v0.2
+      - name: Delete older Releases
+        uses: dev-drprasad/delete-older-releases@v0.2
         with:
           keep_latest: 0
         env:
