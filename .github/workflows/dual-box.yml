@@ -17,6 +17,7 @@ jobs:
         with:
           repository: SagerNet/sing-box
           fetch-depth: 0
+      - run: git checkout $(git describe --tags --abbrev=0)
 
       - name: Setup Go
         uses: actions/setup-go@v4
