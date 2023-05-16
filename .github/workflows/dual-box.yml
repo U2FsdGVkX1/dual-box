@@ -35,4 +35,3 @@ jobs:
         with:
           file: sing-box
           body: ${{ env.VERSION }}
-          overwrite: true
