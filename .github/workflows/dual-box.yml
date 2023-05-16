@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    env:
+      TAGS: "with_gvisor,with_quic,with_wireguard,with_utls,with_reality_server,with_clash_api"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: SagerNet/sing-box
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: 'stable'
+
+      - name: Test sing-box
+        run: |
+          cd test
+          go test -v -tags "$TAGS" .
+      
+      - name: Build sing-box
+        run: |
+          make TAGS=$TAGS
+          echo "VERSION=$(./sing-box version)" >> $GITHUB_ENV
+
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file: target/release/mything
+          overwrite: true
+          body: ${{ env.VERSION }}
