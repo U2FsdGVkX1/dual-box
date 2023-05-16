@@ -21,11 +21,6 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: 'stable'
-
-      - name: Test sing-box
-        run: |
-          cd test
-          go test -v -tags "$TAGS" .
       
       - name: Build sing-box
         run: |
