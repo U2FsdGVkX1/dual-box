@@ -30,7 +30,13 @@ jobs:
           ./sing-box version >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
-      - name: Upload binaries to release
+      - uses: dev-drprasad/delete-older-releases@v0.2
+        with:
+          keep_latest: 0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release
         uses: svenstaro/upload-release-action@v2
         with:
           file: sing-box
