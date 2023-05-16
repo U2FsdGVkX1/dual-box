@@ -26,7 +26,9 @@ jobs:
       - name: Build sing-box
         run: |
           make TAGS=$TAGS
-          echo "VERSION=$(./sing-box version)" >> $GITHUB_ENV
+          echo 'VERSION<<EOF' >> $GITHUB_ENV
+          ./sing-box version >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
