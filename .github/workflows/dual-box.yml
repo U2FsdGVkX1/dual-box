@@ -31,7 +31,7 @@ jobs:
           echo 'EOF' >> $GITHUB_ENV
 
       - name: Delete older Releases
-        uses: dev-drprasad/delete-older-releases@v0.2
+        uses: dev-drprasad/delete-older-releases@v0.2.1
         with:
           keep_latest: 0
         env:
