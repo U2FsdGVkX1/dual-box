@@ -26,7 +26,7 @@ jobs:
       
       - name: Build sing-box
         run: |
-          make TAGS=$TAGS
+          CGO_ENABLED=0 make TAGS=$TAGS
           echo 'VERSION<<EOF' >> $GITHUB_ENV
           ./sing-box version >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
