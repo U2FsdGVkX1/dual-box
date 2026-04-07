@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     env:
-      TAGS: "with_quic,with_grpc,with_wireguard,with_utls"
+      TAGS: "with_quic,with_grpc,with_wireguard,with_utls,with_v2ray_api"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
